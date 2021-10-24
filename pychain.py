@@ -7,12 +7,13 @@
 # * Test your complete `PyChain` ledger.
 
 # Imports
-import streamlit as st
-from dataclasses import dataclass
-from typing import Any, List
-import datetime as datetime
-import pandas as pd
 import hashlib
+import pandas as pd
+import streamlit as st
+import datetime as datetime
+
+from typing import Any, List
+from dataclasses import dataclass
 
 
 @dataclass
@@ -57,15 +58,11 @@ class PyChain:
     difficulty: int = 4
 
     def proof_of_work(self, block):
-
         calculated_hash = block.hash_block()
-
         num_of_zeros = "0" * self.difficulty
 
         while not calculated_hash.startswith(num_of_zeros):
-
             block.nonce += 1
-
             calculated_hash = block.hash_block()
 
         print("Winning Hash", calculated_hash)
@@ -87,6 +84,7 @@ class PyChain:
             block_hash = block.hash_block()
 
         print("Blockchain is Valid")
+
         return True
 
 ################################################################################
