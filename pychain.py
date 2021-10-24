@@ -90,9 +90,7 @@ class PyChain:
 ################################################################################
 # Streamlit Code
 
-# Adds the cache decorator for Streamlit
-
-
+# Add cache decorator for Streamlit
 @st.cache(allow_output_mutation=True)
 def setup():
     print("Initializing Chain")
@@ -105,19 +103,8 @@ st.markdown("## Store a Transaction Record in the PyChain")
 pychain = setup()
 
 ################################################################################
-# Step 3:
-# Add Relevant User Inputs to the Streamlit Interface
 
-# Code additional input areas for the user interface of your Streamlit
-# application. Create these input areas to capture the sender, receiver, and
-# amount for each transaction that you’ll store in the `Block` record.
-# To do so, complete the following steps:
-# 1. Delete the `input_data` variable from the Streamlit interface.
-# 2. Add an input area where you can get a value for `sender` from the user.
-# 3. Add an input area where you can get a value for `receiver` from the user.
-# 4. Add an input area where you can get a value for `amount` from the user.
-# 5. As part of the Add Block button functionality, update `new_block` so that `Block` consists of an attribute named `record`, which is set equal to a `Record` that contains the `sender`, `receiver`, and `amount` values. The updated `Block`should also include the attributes for `creator_id` and `prev_hash`.
-
+# Prompt user for transaction data
 input_sender = st.text_input("Enter Sender:")
 input_receiver = st.text_input("Enter Receiver:")
 input_amount = st.number_input("Enter Transaction Amount:")
