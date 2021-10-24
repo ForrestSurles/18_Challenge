@@ -118,38 +118,26 @@ pychain = setup()
 # 4. Add an input area where you can get a value for `amount` from the user.
 # 5. As part of the Add Block button functionality, update `new_block` so that `Block` consists of an attribute named `record`, which is set equal to a `Record` that contains the `sender`, `receiver`, and `amount` values. The updated `Block`should also include the attributes for `creator_id` and `prev_hash`.
 
-# @TODO:
-# Delete the `input_data` variable from the Streamlit interface.
-input_data = st.text_input("Block Data")
-
-# @TODO:
-# Add an input area where you can get a value for `sender` from the user.
-# YOUR CODE HERE
-
-# @TODO:
-# Add an input area where you can get a value for `receiver` from the user.
-# YOUR CODE HERE
-
-# @TODO:
-# Add an input area where you can get a value for `amount` from the user.
-# YOUR CODE HERE
+input_sender = st.text_input("Enter Sender:")
+input_receiver = st.text_input("Enter Receiver:")
+input_amount = st.number_input("Enter Transaction Amount:")
 
 if st.button("Add Block"):
     prev_block = pychain.chain[-1]
     prev_block_hash = prev_block.hash_block()
 
-    # @TODO
-    # Update `new_block` so that `Block` consists of an attribute named `record`
-    # which is set equal to a `Record` that contains the `sender`, `receiver`,
-    # and `amount` values
     new_block = Block(
-        data=input_data,
+        record=Record(
+            sender=input_sender,
+            receiver=input_receiver,
+            amount=input_amount
+            )
         creator_id=42,
         prev_hash=prev_block_hash
     )
 
     pychain.add_block(new_block)
-    st.balloons()
+    st.balloons()       # Because, everyone deserves balloons sometimes...
 
 ################################################################################
 # Streamlit Code (continues)
