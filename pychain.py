@@ -1,18 +1,3 @@
-# PyChain Ledger
-################################################################################
-# You’ll make the following updates to the provided Python file for this
-# Challenge, which already contains the basic `PyChain` ledger structure that
-# you created throughout the module:
-
-# Step 1: Create a Record Data Class
-# * Create a new data class named `Record`. This class will serve as the
-# blueprint for the financial transaction records that the blocks of the ledger
-# will store.
-
-# Step 2: Modify the Existing Block Data Class to Store Record Data
-# * Change the existing `Block` data class by replacing the generic `data`
-# attribute with a `record` attribute that’s of type `Record`.
-
 # Step 3: Add Relevant User Inputs to the Streamlit Interface
 # * Create additional user input areas in the Streamlit application. These
 # input areas should collect the relevant information for each financial record
@@ -21,7 +6,6 @@
 # Step 4: Test the PyChain Ledger by Storing Records
 # * Test your complete `PyChain` ledger.
 
-################################################################################
 # Imports
 import streamlit as st
 from dataclasses import dataclass
@@ -30,41 +14,12 @@ import datetime as datetime
 import pandas as pd
 import hashlib
 
-################################################################################
-# Step 1:
-# Create a Record Data Class
 
-# Define a new Python data class named `Record`. Give this new class a
-# formalized data structure that consists of the `sender`, `receiver`, and
-# `amount` attributes. To do so, complete the following steps:
-# 1. Define a new class named `Record`.
-# 2. Add the `@dataclass` decorator immediately before the `Record` class
-# definition.
-# 3. Add an attribute named `sender` of type `str`.
-# 4. Add an attribute named `receiver` of type `str`.
-# 5. Add an attribute named `amount` of type `float`.
-# Note that you’ll use this new `Record` class as the data type of your `record` attribute in the next section.
-
-
-# @TODO
-# Create a Record Data Class that consists of the `sender`, `receiver`, and
-# `amount` attributes
 @dataclass
 class Record:
     sender: str
     receiver: str
     amount: float
-
-
-################################################################################
-# Step 2:
-# Modify the Existing Block Data Class to Store Record Data
-
-# Rename the `data` attribute in your `Block` class to `record`, and then set
-# it to use an instance of the new `Record` class that you created in the
-# previous section. To do so, complete the following steps:
-# 1. In the `Block` class, rename the `data` attribute to `record`.
-# 2. Set the data type of the `record` attribute to `Record`.
 
 
 @dataclass
@@ -113,7 +68,8 @@ class PyChain:
 
             calculated_hash = block.hash_block()
 
-        print("Wining Hash", calculated_hash)
+        print("Winning Hash", calculated_hash)
+
         return block
 
     def add_block(self, candidate_block):
