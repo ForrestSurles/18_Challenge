@@ -97,16 +97,20 @@ pychain = setup()
 ################################################################################
 
 # Prompt user for transaction data
-user_sender = st.text_input("Enter Sender:")
-user_receiver = st.text_input("Enter Receiver:")
-user_amount = st.text_input("Enter Transaction Amount:")
+sender = st.text_input("Enter Sender:")
+receiver = st.text_input("Enter Receiver:")
+amount = st.text_input("Enter Transaction Amount:")
 
 if st.button("Add Block"):
     prev_block = pychain.chain[-1]
     prev_block_hash = prev_block.hash_block()
 
     new_block=Block(
-        record=user_sender + user_receiver + user_amount,
+        record=Record(
+            sender=sender,
+            receiver=receiver,
+            amount=amount
+        ),
         creator_id=42,
         prev_hash=prev_block_hash
     )
