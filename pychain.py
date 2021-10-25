@@ -1,6 +1,3 @@
-# Step 4: Test the PyChain Ledger by Storing Records
-# * Test your complete `PyChain` ledger.
-
 # Imports
 import hashlib
 import pandas as pd
@@ -22,7 +19,7 @@ class Record:
 class Block:
     record: Record
     creator_id: int
-    prev_hash: str = 0
+    prev_hash: str = "0"
     timestamp: str = datetime.datetime.utcnow().strftime("%H:%M:%S")
     nonce: str = 0
 
@@ -109,11 +106,7 @@ if st.button("Add Block"):
     prev_block_hash = prev_block.hash_block()
 
     new_block=Block(
-        record=Record(
-            sender=user_sender,
-            receiver=user_receiver,
-            amount=user_amount
-        ),
+        record=user_sender + user_receiver + user_amount,
         creator_id=42,
         prev_hash=prev_block_hash
     )
@@ -141,31 +134,3 @@ st.sidebar.write(selected_block)
 
 if st.button("Validate Chain"):
     st.write(pychain.is_valid())
-
-################################################################################
-# Step 4:
-# Test the PyChain Ledger by Storing Records
-
-# Test your complete `PyChain` ledger and user interface by running your
-# Streamlit application and storing some mined blocks in your `PyChain` ledger.
-# Then test the blockchain validation process by using your `PyChain` ledger.
-# To do so, complete the following steps:
-
-# 1. In the terminal, navigate to the project folder where you've coded the
-#  Challenge.
-
-# 2. In the terminal, run the Streamlit application by
-# using `streamlit run pychain.py`.
-
-# 3. Enter values for the sender, receiver, and amount, and then click the "Add
-# Block" button. Do this several times to store several blocks in the ledger.
-
-# 4. Verify the block contents and hashes in the Streamlit drop-down menu.
-# Take a screenshot of the Streamlit application page, which should detail a
-# blockchain that consists of multiple blocks. Include the screenshot in the
-# `README.md` file for your Challenge repository.
-
-# 5. Test the blockchain validation process by using the web interface.
-# Take a screenshot of the Streamlit application page, which should indicate
-# the validity of the blockchain. Include the screenshot in the `README.md`
-# file for your Challenge repository.
