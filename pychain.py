@@ -86,7 +86,9 @@ class PyChain:
 @st.cache(allow_output_mutation=True)
 def setup():
     print("Initializing Chain")
-    return PyChain([Block("Genesis", 0)])
+    return PyChain([Block(
+        Record(sender='Genesis', receiver='None', amount=0.0),
+        0)])
 
 
 st.markdown("# PyChain")
@@ -99,7 +101,7 @@ pychain = setup()
 # Prompt user for transaction data
 sender = st.text_input("Enter Sender:")
 receiver = st.text_input("Enter Receiver:")
-amount = st.text_input("Enter Transaction Amount:")
+amount = st.number_input("Enter Transaction Amount:")
 
 if st.button("Add Block"):
     prev_block = pychain.chain[-1]
@@ -124,6 +126,9 @@ if st.button("Add Block"):
 st.markdown("## The PyChain Ledger")
 
 pychain_df = pd.DataFrame(pychain.chain)
+record_df = pd.DataFrame.from_records(pychain_df['record'])
+pychain_df = pd.concat([record_df, pychain_df], axis=1).drop('record', axis=1)
+
 st.write(pychain_df)
 
 difficulty = st.sidebar.slider("Block Difficulty", 1, 5, 2)
