@@ -1,10 +1,5 @@
 # Module 18 Challenge
 
+Confirmation of steps 4/5:
 
-Confirmed functionality of the blockchain:
-
-<img src='./images/step_4.png' width='700px' />
-
-Confirmed validity of blockchain:
-
-<img src='./images/step_5.png' width='700px' />
+<img src='./images/run_confirmation.png' width='700px' />
