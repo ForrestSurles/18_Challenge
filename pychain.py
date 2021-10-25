@@ -1,8 +1,3 @@
-# Step 3: Add Relevant User Inputs to the Streamlit Interface
-# * Create additional user input areas in the Streamlit application. These
-# input areas should collect the relevant information for each financial record
-# that you’ll store in the `PyChain` ledger.
-
 # Step 4: Test the PyChain Ledger by Storing Records
 # * Test your complete `PyChain` ledger.
 
@@ -105,20 +100,20 @@ pychain = setup()
 ################################################################################
 
 # Prompt user for transaction data
-input_sender = st.text_input("Enter Sender:")
-input_receiver = st.text_input("Enter Receiver:")
-input_amount = st.number_input("Enter Transaction Amount:")
+user_sender = st.text_input("Enter Sender:")
+user_receiver = st.text_input("Enter Receiver:")
+user_amount = st.text_input("Enter Transaction Amount:")
 
 if st.button("Add Block"):
     prev_block = pychain.chain[-1]
     prev_block_hash = prev_block.hash_block()
 
-    new_block = Block(
+    new_block=Block(
         record=Record(
-            sender=input_sender,
-            receiver=input_receiver,
-            amount=input_amount
-            ),
+            sender=user_sender,
+            receiver=user_receiver,
+            amount=user_amount
+        ),
         creator_id=42,
         prev_hash=prev_block_hash
     )
